@@ -1,0 +1,69 @@
+作業一：
+請上 Kaggle, 在 Competitions 或 Dataset 中找一組競賽或資料並寫下：https://www.kaggle.com/russellyates88/suicide-rates-overview-1985-to-2016
+
+1. 你選的這組資料為何重要
+ANS：希望可以避免自殺行為
+
+2. 資料從何而來 (tips: 譬如提供者是誰、以什麼方式蒐集)
+ANS：來自世界健康組織、世界銀行、聯合國人類發展指南
+
+3. 蒐集而來的資料型態為何
+ANS：字串、整數、浮點數、時間
+
+4. 這組資料想解決的問題如何評估
+ANS：每十萬人口自殺數量的比例是否有相關的因素影響
+
+作業二：
+
+想像你經營一個自由載客車隊，你希望能透過數據分析以提升業績，請你思考並描述你如何規劃整體的分析/解決方案：
+
+1. 核心問題為何 
+ANS：兩個方向，第一點從內部出發，每一次載客的任務是否有達成顧客繼續使用的滿意程度，第二點從外部探索，是我們在市場上的曝光度或是獨特性不足，以至於業績無法提升，而提升業績主要來自提高載客趟數、拓展載客範圍與載客車數。
+
+2. 資料從何而來 
+ANS：。載客的服務品質，透過使用載具上的評分機制。載客趟數，透過每個司機回報。載客車數，透過車隊的註冊資訊。
+
+3. 蒐集而來的資料型態為何
+ANS：時間、整數、座標位置
+
+
+4. 你要回答的問題，其如何評估 (tips：你的假設如何驗證)
+ANS：透過提升網站或是載具的用戶數量(曝光)以及增加服務的品質(顧客滿意)來評估是否助於載客趟數、載客車數。
+
+
+作業三：
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+def mean_squared_error(y,yp):
+    mse =  sum((y - yp) ** 2) /  len(y)
+    return mse
+    
+def mean_absolute_error(y,yp):
+    mae = sum(abs(y - yp)) / len(y)
+    return mae
+
+                      
+                      
+w = 3
+b = 0.5
+
+x_lin = np.linspace(0, 100, 101)
+y = (x_lin + np.random.randn(101) * 5) * w + b
+plt.plot(x_lin, y, 'b.', label = 'data points')
+plt.title("Assume we have data points")
+plt.legend(loc = 2)
+plt.show()
+
+y_hat = x_lin * w + b
+plt.plot(x_lin, y, 'b.', label = 'data')
+plt.plot(x_lin, y_hat, 'r-', label = 'prediction')
+plt.title("Assume we have data points (And the prediction)")
+plt.legend(loc = 2)
+plt.show()
+  
+MSE = mean_squared_error(y, y_hat)
+MAE = mean_absolute_error(y, y_hat)
+print("The Mean squared error is %.3f" % (MSE))
+print("The Mean absolute error is %.3f" % (MAE))
